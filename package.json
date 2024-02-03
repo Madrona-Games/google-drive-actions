@@ -20,10 +20,10 @@
   },
   "scripts": {
     "prepare": "lefthook install",
-    "build": "tsc && concurrently \"ncc build --source-map --license licenses.txt -o dist/download src/download/download.ts\" \"ncc build --source-map --license licenses.txt -o dist/create-folder src/create-folder/create-folder.ts\" \"ncc build --source-map --license licenses.txt -o dist/delete src/delete/delete.ts\" \"ncc build --source-map --license licenses.txt -o dist/find src/find/find.ts\" \"ncc build --source-map --license licenses.txt -o dist/upload src/upload/upload.ts\"",
-    "test": "tsc --noEmit && jest --coverage",
+    "build": "npm install && tsc && concurrently \"ncc build --source-map --license licenses.txt -o dist/download src/download/download.ts\" \"ncc build --source-map --license licenses.txt -o dist/create-folder src/create-folder/create-folder.ts\" \"ncc build --source-map --license licenses.txt -o dist/delete src/delete/delete.ts\" \"ncc build --source-map --license licenses.txt -o dist/find src/find/find.ts\" \"ncc build --source-map --license licenses.txt -o dist/upload src/upload/upload.ts\"",
+    "test": "jest",
     "lint": "prettier --check \"src/**/*.{js,ts}\" && eslint src/**/*.ts",
-    "format": "prettier --write **/*.ts"
+    "format": "prettier --write \"src/**/*.{js,ts}\""
   },
   "license": "MIT",
   "dependencies": {
