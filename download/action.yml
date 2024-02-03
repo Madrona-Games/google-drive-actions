@@ -1,0 +1,28 @@
+name: 'Google Drive - Download'
+description: 'Downloads a file from Google Drive'
+author: 'Madrona Games, Inc.'
+inputs:
+  file-id:
+    description: 'The ID of the file to download'
+    required: false
+  drive-path:
+    description: 'The path to the file in Google Drive. Used with google-drive-root-folder-id'
+    required: false
+  google-drive-root-folder-id:
+    description: 'The ID of the root folder in Google Drive. Used with drive-path'
+    required: false
+  destination-path:
+    description: 'The path to save the file to'
+    required: true
+  download-name:
+    description: 'The name to save the file as'
+    required: false
+  google-service-account-credentials-json:
+    description: 'The JSON credentials for the Google Service Account'
+    required: true
+runs:
+  using: 'node20'
+  main: '../dist/download/index.js'
+branding:
+  icon: 'download-cloud'
+  color: 'gray-dark'

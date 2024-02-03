@@ -1,0 +1,22 @@
+name: 'Google Drive - Delete'
+description: 'Delete a file or folder from Google Drive'
+author: 'Madrona Games, Inc.'
+inputs:
+  file-id:
+    description: 'The ID of the file to delete'
+    required: false
+  drive-file-path:
+    description: 'The path to the file in Google Drive to delete. Used with google-drive-root-folder-id'
+    required: false
+  google-drive-root-folder-id:
+    description: 'The ID of the root folder in Google Drive. Used with drive-file-path'
+    required: false
+  google-service-account-credentials-json:
+    description: 'The JSON credentials for the Google Service Account'
+    required: true
+runs:
+  using: 'node20'
+  main: '../dist/delete/index.js'
+branding:
+  icon: 'cloud-off'
+  color: 'gray-dark'

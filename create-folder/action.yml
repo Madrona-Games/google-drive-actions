@@ -1,0 +1,22 @@
+name: 'Google Drive - Create Folder'
+description: 'Recursively create a folder in Google Drive'
+author: 'Madrona Games, Inc.'
+inputs:
+  folder-path:
+    description: 'The path to the folder to create in Google Drive.'
+    required: true
+  google-drive-root-folder-id:
+    description: 'The ID of the root folder in Google Drive'
+    required: true
+  google-service-account-credentials-json:
+    description: 'The JSON credentials for the Google Service Account'
+    required: true
+outputs:
+  folder-id:
+    description: 'The ID of the new folder'
+runs:
+  using: 'node20'
+  main: '../dist/create-folder/index.js'
+branding:
+  icon: 'folder-plus'
+  color: 'gray-dark'

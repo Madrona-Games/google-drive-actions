@@ -1,0 +1,28 @@
+name: 'Google Drive - Upload'
+description: 'Uploads a file to Google Drive'
+author: 'Madrona Games, Inc.'
+inputs:
+  file-path:
+    description: 'The path to the file to upload'
+    required: true
+  destination-folder-id:
+    description: 'The ID of the destination folder'
+    required: false
+  google-drive-root-folder-id:
+    description: 'The ID of the root folder in Google Drive. Used with destination-folder-path'
+    required: false
+  destination-folder-path:
+    description: 'The path of the destination folder in Google Drive. Used with google-drive-root-folder-id'
+    required: false
+  google-service-account-credentials-json:
+    description: 'The JSON credentials for the Google Service Account'
+    required: true
+outputs:
+  file-id:
+    description: 'The ID of the uploaded file'
+runs:
+  using: 'node20'
+  main: '../dist/upload/index.js'
+branding:
+  icon: 'upload-cloud'
+  color: 'gray-dark'

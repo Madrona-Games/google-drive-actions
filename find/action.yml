@@ -1,0 +1,22 @@
+name: 'Google Drive - Find'
+description: 'Finds the fileID for a file or folder in Google Drive'
+author: 'Madrona Games, Inc.'
+inputs:
+  drive-path:
+    description: 'The path to the file to find the ID for'
+    required: true
+  google-drive-root-folder-id:
+    description: 'The ID of the root folder in Google Drive.'
+    required: true
+  google-service-account-credentials-json:
+    description: 'The JSON credentials for the Google Service Account'
+    required: true
+outputs:
+  file-id:
+    description: 'The ID of the found file'
+runs:
+  using: 'node20'
+  main: '../dist/find/index.js'
+branding:
+  icon: 'search'
+  color: 'gray-dark'
