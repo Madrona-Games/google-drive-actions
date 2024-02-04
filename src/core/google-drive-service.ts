@@ -88,7 +88,7 @@ export class GoogleDriveService {
       corpora: 'allDrives',
     });
 
-    if (!response?.data.files) {
+    if (!response.data.files || response.data.files.length === 0) {
       core.debug('No files found');
 
       return undefined;
