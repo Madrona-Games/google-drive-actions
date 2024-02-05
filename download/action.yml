@@ -14,8 +14,9 @@ inputs:
   destination-path:
     description: 'The path to save the file to'
     required: true
+    default: '.'
   download-name:
-    description: 'The name to save the file as'
+    description: 'The name to save the file as. Defaults to the name in Google Drive'
     required: false
   google-service-account-credentials-json:
     description: 'The JSON credentials for the Google Service Account'
