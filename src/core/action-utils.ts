@@ -35,5 +35,5 @@ export function getInputAsBool(name: string, options?: core.InputOptions): boole
 }
 
 export function getInputAsString(name: string, options?: core.InputOptions): string {
-  return core.getInput(name, options) ?? '';
+  return core.getInput(name, options);
 }
