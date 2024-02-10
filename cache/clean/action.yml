@@ -1,0 +1,24 @@
+name: Google Drive Cache Clean
+description: 'Cleans up old caches'
+author: Madrona Games, Inc.
+
+branding:
+  icon: 'minimize-2'
+  color: 'gray-dark'
+
+# Define your inputs here.
+inputs:
+  max-cache-age:
+    description: 'The maximum age of a cache to keep, in days'
+    required: true
+    default: 14
+  google-service-account-credentials-json:
+    description: 'The JSON contents of the Google Service Account credentials file'
+    required: true
+  google-drive-folder-id:
+    description: 'The ID of the Google Drive folder to use for caching'
+    required: true
+
+runs:
+  using: 'node20'
+  main: '../../dist/cache/clean/index.js'

@@ -72,6 +72,43 @@ export class GoogleDriveService {
     });
   }
 
+  /**
+   * Returns a list of files in the folder
+   *
+   * @param folderId FolderID of the folder to search in
+   * @param beforeDate The cutoff date for the last modified field of the files.
+   *                   Defaults to a time 2 days in the future to return all files
+   *                   in the folder
+   * @returns List of files in the folder
+   */
+  async getFilesInFolder(
+    folderId: string,
+    beforeDate: Date = new Date(Date.now() + 3600 * 1000 * 24 * 2),
+  ): Promise<{ id: string; name: string }[]> {
+    if (!this.drive) {
+      core.debug('Drive is not initialized');
+
+      return [];
+    }
+
+    const response = await this.drive.files.list({
+      q: `'${folderId}' in parents and mimeType != 'application/vnd.google-apps.folder' and trashed = false and modifiedTime < '${beforeDate.toISOString()}'`,
+      fields: 'files(id, name)',
+      orderBy: 'modifiedTime desc',
+      includeItemsFromAllDrives: true,
+      supportsAllDrives: true,
+      corpora: 'allDrives',
+    });
+
+    if (!response?.data.files) {
+      core.debug('No files found');
+
+      return [];
+    }
+
+    return response.data.files.map((file) => ({ id: file.id ?? '', name: file.name ?? '' }));
+  }
+
   async findFileIDByName(folderId: string, name: string): Promise<string | null | undefined> {
     if (!this.drive) {
       core.debug('Drive is not initialized');
