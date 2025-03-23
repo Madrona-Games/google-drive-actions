@@ -21,8 +21,14 @@ export async function findImpl(): Promise<void> {
     required: true,
   });
 
-  const fileID = await findFileID(drivePath, rootFolderID, googleDriveService);
-  core.setOutput(Outputs.FileID, fileID);
+  try {
+    const fileID = await findFileID(drivePath, rootFolderID, googleDriveService);
+    core.setOutput(Outputs.FileID, fileID);
+  } catch (error) {
+    if (error instanceof FileNotFoundException) {
+      return;
+    }
+  }
 }
 
 export async function findFileID(
