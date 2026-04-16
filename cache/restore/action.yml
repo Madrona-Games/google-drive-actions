@@ -27,6 +27,12 @@ inputs:
       'Check if a cache entry exists for the given input(s) (key, restore-keys) without downloading the cache'
     default: 'false'
     required: false
+  google-service-account-credentials-json:
+    description: 'The JSON contents of the Google Service Account credentials file'
+    required: true
+  google-drive-folder-id:
+    description: 'The ID of the Google Drive folder to use for caching'
+    required: true
 outputs:
   cache-hit:
     description: 'A boolean value to indicate an exact match was found for the primary key'

@@ -16,6 +16,12 @@ inputs:
       'An optional boolean when enabled, allows windows runners to save caches that can be restored on other platforms'
     default: 'false'
     required: false
+  google-service-account-credentials-json:
+    description: 'The JSON contents of the Google Service Account credentials file'
+    required: true
+  google-drive-folder-id:
+    description: 'The ID of the Google Drive folder to use for caching'
+    required: true
 runs:
   using: 'node24'
   main: '../../dist/cache/save-only/index.js'
