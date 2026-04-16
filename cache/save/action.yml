@@ -17,7 +17,7 @@ inputs:
     default: 'false'
     required: false
 runs:
-  using: 'node20'
+  using: 'node24'
   main: '../../dist/cache/save-only/index.js'
 branding:
   icon: 'archive'

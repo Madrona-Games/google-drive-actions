@@ -1,5 +1,5 @@
 // eslint-disable-next-line camelcase
-import { google, drive_v3 } from 'googleapis';
+import { drive, drive_v3, auth } from '@googleapis/drive';
 import { createReadStream, createWriteStream } from 'node:fs';
 import * as core from '@actions/core';
 import path from 'node:path';
@@ -11,12 +11,12 @@ export class GoogleDriveService {
   async authenticate(credentialJson: string): Promise<void> {
     const key = JSON.parse(credentialJson);
 
-    const serviceAuth = new google.auth.GoogleAuth({
+    const serviceAuth = new auth.GoogleAuth({
       credentials: key,
       scopes: ['https://www.googleapis.com/auth/drive'],
     });
 
-    this.drive = google.drive({ version: 'v3', auth: serviceAuth });
+    this.drive = drive({ version: 'v3', auth: serviceAuth });
   }
 
   async uploadFile(folderId: string, filePath: string): Promise<string | undefined> {
@@ -84,7 +84,7 @@ export class GoogleDriveService {
   async getFilesInFolder(
     folderId: string,
     beforeDate: Date = new Date(Date.now() + 3600 * 1000 * 24 * 2),
-  ): Promise<{ id: string; name: string }[]> {
+  ): Promise<Array<{ id: string; name: string }>> {
     if (!this.drive) {
       core.debug('Drive is not initialized');
 

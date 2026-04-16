@@ -15,7 +15,7 @@ outputs:
   folder-id:
     description: 'The ID of the new folder'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: '../dist/create-folder/index.js'
 branding:
   icon: 'folder-plus'

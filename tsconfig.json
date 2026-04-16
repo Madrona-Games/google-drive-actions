@@ -1,15 +1,26 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "compilerOptions": {
-    "target": "ES2022",
-    "module": "CommonJS",
+    "target": "ES2024",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "rootDir": "./src",
     "sourceMap": true,
     "outDir": "./lib",
     "noImplicitAny": true,
     "esModuleInterop": true,
     "strict": true,
-    "newLine": "lf",
+    "types": [
+      "node"
+    ],
   },
-  "exclude": ["./dist", "./node_modules", "./__tests__", "./coverage"],
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "./dist",
+    "./node_modules",
+    "./__tests__",
+    "./coverage"
+  ],
 }

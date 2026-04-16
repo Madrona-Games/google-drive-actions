@@ -1,7 +1,7 @@
 import { exec } from '@actions/exec';
 import * as io from '@actions/io';
 import { existsSync, writeFileSync } from 'node:fs';
-import * as path from 'node:path';
+import path from 'node:path';
 import * as utils from './cache-utils';
 import { ArchiveTool } from './contracts.d';
 import {

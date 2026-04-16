@@ -1,0 +1,42 @@
+name: Check dist/
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check-dist:
+    name: Check dist/
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: volta-cli/action@v5
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build
+        run: npm run build
+
+      - name: Check for diff in dist/
+        run: |
+          if [ "$(git diff --ignore-space-at-eol --text dist/ | wc -l)" -gt "0" ]; then
+            echo "::error::Detected uncommitted changes in dist/ after build. Please run 'npm run build' and commit the results."
+            echo ""
+            echo "Changed files:"
+            git diff --ignore-space-at-eol --text --stat dist/
+            exit 1
+          fi
+
+      - name: Check for untracked dist files
+        run: |
+          if [ -n "$(git ls-files --others --exclude-standard dist/)" ]; then
+            echo "::error::Detected new untracked files in dist/ after build. Please run 'npm run build' and commit the results."
+            echo ""
+            echo "Untracked files:"
+            git ls-files --others --exclude-standard dist/
+            exit 1
+          fi

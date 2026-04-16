@@ -1,5 +1,5 @@
 import * as core from '@actions/core';
-import * as path from 'node:path';
+import path from 'node:path';
 import * as utils from './cache-utils';
 import { createTar, extractTar, listTar } from './tar';
 import { GoogleDriveService } from '../../core/google-drive-service';

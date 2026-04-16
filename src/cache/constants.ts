@@ -24,7 +24,6 @@ export enum State {
   CacheMatchedKey = 'CACHE_RESULT',
 }
 
-// eslint-disable-next-line unicorn/prevent-abbreviations
 export const RefKey = 'GITHUB_REF';
 
 export enum CacheFileExtension {
@@ -58,10 +57,10 @@ export const DefaultRetryDelay = 5000;
 export const SocketTimeout = 5000;
 
 // The default path of GNUtar on hosted Windows runners
-export const GnuTarPathOnWindows = `${process.env['PROGRAMFILES']}\\Git\\usr\\bin\\tar.exe`;
+export const GnuTarPathOnWindows = String.raw`${process.env['PROGRAMFILES']}\Git\usr\bin\tar.exe`;
 
 // The default path of BSDtar on hosted Windows runners
-export const SystemTarPathOnWindows = `${process.env['SYSTEMDRIVE']}\\Windows\\System32\\tar.exe`;
+export const SystemTarPathOnWindows = String.raw`${process.env['SYSTEMDRIVE']}\Windows\System32\tar.exe`;
 
 export const TarFilename = 'cache.tar';
 
