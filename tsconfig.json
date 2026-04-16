@@ -10,17 +10,8 @@
     "noImplicitAny": true,
     "esModuleInterop": true,
     "strict": true,
-    "types": [
-      "node"
-    ],
+    "types": ["node"]
   },
-  "include": [
-    "./src/**/*"
-  ],
-  "exclude": [
-    "./dist",
-    "./node_modules",
-    "./__tests__",
-    "./coverage"
-  ],
+  "include": ["./src/**/*"],
+  "exclude": ["./dist", "./node_modules", "./__tests__", "./coverage"]
 }
