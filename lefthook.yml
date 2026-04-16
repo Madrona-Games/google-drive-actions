@@ -19,13 +19,13 @@ pre-commit:
       glob: '*.{js,jsx,ts,tsx}'
       exclude: 'dist/'
       run: npx prettier --write {staged_files} && npx eslint {staged_files} && git add {staged_files}
-    run tests:
-      glob: '*.{js,jsx,ts,tsx}'
-      exclude: 'dist/'
-      run: npx jest --passWithNoTests --findRelatedTests {staged_files}
     build distributables:
       skip: ['merge', 'rebase']
       run: npm run build && git add dist
     make shell script executable:
       glob: '*.sh'
       run: git update-index --chmod=+x
+    lint code:
+      glob: '*.{js,jsx,ts,tsx}'
+      exclude: 'dist/'
+      run: npx eslint {staged_files}

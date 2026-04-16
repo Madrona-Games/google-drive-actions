@@ -2,11 +2,11 @@ import * as core from '@actions/core';
 import * as exec from '@actions/exec';
 import * as glob from '@actions/glob';
 import * as io from '@actions/io';
-import * as fs from 'node:fs';
-import * as path from 'node:path';
+import fs from 'node:fs';
+import path from 'node:path';
 import * as semver from 'semver';
-import * as util from 'node:util';
-import { v4 as uuidV4 } from 'uuid';
+import { promisify } from 'node:util';
+import { randomUUID } from 'node:crypto';
 import { CacheFileExtension, CompressionMethod, GnuTarPathOnWindows } from '../constants';
 
 // From https://github.com/actions/toolkit/blob/main/packages/tool-cache/src/tool-cache.ts#L23
@@ -28,7 +28,7 @@ export async function createTemporaryDirectory(): Promise<string> {
     temporaryDirectory = path.join(baseLocation, 'actions', 'temp');
   }
 
-  const destination = path.join(temporaryDirectory, uuidV4());
+  const destination = path.join(temporaryDirectory, randomUUID());
   await io.mkdirP(destination);
 
   return destination;
@@ -62,7 +62,7 @@ export async function resolvePaths(patterns: string[]): Promise<string[]> {
 }
 
 export async function unlinkFile(filePath: fs.PathLike): Promise<void> {
-  return util.promisify(fs.unlink)(filePath);
+  return promisify(fs.unlink)(filePath);
 }
 
 async function getVersion(app: string, additionalArguments: string[] = []): Promise<string> {
@@ -125,9 +125,8 @@ export function isGhes(): boolean {
 }
 
 export function isExactKeyMatch(key: string, cacheKey?: string): boolean {
-  return !!(
-    cacheKey &&
-    cacheKey.localeCompare(key, undefined, {
+  return (
+    cacheKey?.localeCompare(key, undefined, {
       sensitivity: 'accent',
     }) === 0
   );

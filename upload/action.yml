@@ -21,7 +21,7 @@ outputs:
   file-id:
     description: 'The ID of the uploaded file'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: '../dist/upload/index.js'
 branding:
   icon: 'upload-cloud'

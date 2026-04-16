@@ -3,10 +3,8 @@ import * as core from '@actions/core';
 import { Outputs, State } from './constants';
 
 export interface IStateProvider {
-  // eslint-disable-next-line no-unused-vars
   setState(key: string, value: string): void;
 
-  // eslint-disable-next-line no-unused-vars
   getState(key: string): string;
 
   getCacheState(): string | undefined;
@@ -24,10 +22,10 @@ class StateProviderBase implements IStateProvider {
     return undefined;
   }
 
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   setState = (key: string, value: string) => {};
 
-  // eslint-disable-next-line no-unused-vars
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   getState = (key: string) => '';
 }
 
@@ -45,6 +43,7 @@ export class NullStateProvider extends StateProviderBase {
   setState = (key: string, value: string) => {
     core.setOutput(this.stateToOutputMap.get(key) as string, value);
   };
-  // eslint-disable-next-line no-unused-vars
+
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   getState = (key: string) => '';
 }

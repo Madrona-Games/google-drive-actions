@@ -37,7 +37,7 @@ outputs:
       'Key of the cache that was restored, it could either be the primary key on cache-hit or a partial/complete match
       of one of the restore keys'
 runs:
-  using: 'node20'
+  using: 'node24'
   main: '../../dist/cache/restore-only/index.js'
 branding:
   icon: 'archive'
