@@ -37,17 +37,17 @@
   "devDependencies": {
     "@types/node": "^25.6.0",
     "@types/semver": "^7.7.1",
-    "esbuild": "^0.28.0",
+    "esbuild": "^0.28.1",
     "eslint": "^9.27.0",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-github": "^6.0.0",
-    "eslint-plugin-jsonc": "^3.1.2",
-    "eslint-plugin-prettier": "^5.5.5",
+    "eslint-import-resolver-typescript": "^4.4.5",
+    "eslint-plugin-github": "^6.1.1",
+    "eslint-plugin-jsonc": "^3.3.0",
+    "eslint-plugin-prettier": "^5.5.6",
     "eslint-plugin-unicorn": "^64.0.0",
-    "lefthook": "^2.1.5",
-    "prettier": "^3.8.3",
+    "lefthook": "^2.1.10",
+    "prettier": "^3.9.5",
     "typescript": "^6.0.2",
-    "typescript-eslint": "^8.58.2"
+    "typescript-eslint": "^8.63.0"
   },
   "volta": {
     "node": "24.14.0"
